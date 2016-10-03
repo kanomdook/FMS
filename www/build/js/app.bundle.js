@@ -12,11 +12,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var ionic_angular_1 = require('ionic-angular');
 var ionic_native_1 = require('ionic-native');
-var home_1 = require('./pages/home/home');
+var trading_1 = require('./pages/trading/trading');
 var MyApp = (function () {
     function MyApp(platform) {
         this.platform = platform;
-        this.rootPage = home_1.HomePage;
+        this.rootPage = trading_1.TradingPage;
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
@@ -33,8 +33,7 @@ var MyApp = (function () {
 }());
 exports.MyApp = MyApp;
 ionic_angular_1.ionicBootstrap(MyApp);
-
-},{"./pages/home/home":2,"@angular/core":150,"ionic-angular":464,"ionic-native":491}],2:[function(require,module,exports){
+},{"./pages/trading/trading":2,"@angular/core":150,"ionic-angular":464,"ionic-native":491}],2:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -47,20 +46,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var ionic_angular_1 = require('ionic-angular');
-var HomePage = (function () {
-    function HomePage(navCtrl) {
+/*
+  Generated class for the TradingPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+*/
+var TradingPage = (function () {
+    function TradingPage(navCtrl) {
         this.navCtrl = navCtrl;
+        this.Trading = [
+            { name: "เงินสด", icon: "http://image.bangkokbiznews.com/kt/media/image/news/2015/12/10/677853/640x390_677853_1449714692.jpg", type: "Electric", cp: "345" },
+            { name: "HomePro", icon: "http://thinkofliving.com/wp-content/uploads/2013/03/Homepro.png", tel: "023564789", imgs: "643" },
+            { name: "Big C", icon: "http://a1.mzstatic.com/us/r30/Purple1/v4/65/57/c4/6557c4ee-5248-016f-a12d-0db06363f0cd/icon175x175.png", tel: "027364842", cp: "342" },
+            { name: "Lotus", icon: "http://www.tescolotus.com/assets/theme2016/img/logo.png", tel: "023873453", cp: "234" }
+        ];
     }
-    HomePage = __decorate([
+    TradingPage = __decorate([
         core_1.Component({
-            templateUrl: 'build/pages/home/home.html'
+            templateUrl: 'build/pages/trading/trading.html',
         }), 
         __metadata('design:paramtypes', [ionic_angular_1.NavController])
-    ], HomePage);
-    return HomePage;
+    ], TradingPage);
+    return TradingPage;
 }());
-exports.HomePage = HomePage;
-
+exports.TradingPage = TradingPage;
 },{"@angular/core":150,"ionic-angular":464}],3:[function(require,module,exports){
 /**
  * @license
