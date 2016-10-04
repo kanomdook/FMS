@@ -12,11 +12,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var ionic_angular_1 = require('ionic-angular');
 var ionic_native_1 = require('ionic-native');
-var buy_product_1 = require('./pages/buy-product/buy-product');
+var home_1 = require('./pages/home/home');
 var MyApp = (function () {
     function MyApp(platform) {
         this.platform = platform;
-        this.rootPage = buy_product_1.BuyProductPage;
+        this.rootPage = home_1.HomePage;
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
@@ -34,7 +34,7 @@ var MyApp = (function () {
 exports.MyApp = MyApp;
 ionic_angular_1.ionicBootstrap(MyApp);
 
-},{"./pages/buy-product/buy-product":2,"@angular/core":150,"ionic-angular":464,"ionic-native":491}],2:[function(require,module,exports){
+},{"./pages/home/home":2,"@angular/core":150,"ionic-angular":464,"ionic-native":491}],2:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -47,96 +47,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var ionic_angular_1 = require('ionic-angular');
-/*
-  Generated class for the BuyProductPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
-var BuyProductPage = (function () {
-    function BuyProductPage(navCtrl, navParams, alertCtrl, modalCtrl, viewCtrl) {
+var HomePage = (function () {
+    function HomePage(navCtrl) {
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.alertCtrl = alertCtrl;
-        this.modalCtrl = modalCtrl;
-        this.viewCtrl = viewCtrl;
-        this.basket = [{ pid: '2', productName: 'book', price: '120', desc: 'หนังสือ', logo: 'images/book.png' },
-            { pid: '3', productName: 'note book', price: '50', desc: 'สมุด', logo: 'images/notebook.png' }];
     }
-    BuyProductPage.prototype.deleteItem = function (item) {
-        var _this = this;
-        var confirm = this.alertCtrl.create({
-            title: 'ยืนยันการลบสินค้า',
-            message: "\u0E04\u0E38\u0E13\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E25\u0E1A " + item.productName + " \u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E15\u0E30\u0E01\u0E23\u0E49\u0E32\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32\u0E43\u0E0A\u0E48\u0E2B\u0E23\u0E37\u0E2D\u0E44\u0E21\u0E48",
-            buttons: [
-                {
-                    text: 'ยกเลิก',
-                    handler: function () {
-                    }
-                },
-                {
-                    text: 'ตกลง',
-                    handler: function () {
-                        for (var i = 0; i < _this.basket.length; i++) {
-                            if (_this.basket[i].pid == item.pid) {
-                                _this.basket.splice(i, 1);
-                                break;
-                            }
-                        }
-                    }
-                }
-            ]
-        });
-        confirm.present();
-    };
-    BuyProductPage.prototype.presentModal = function () {
-        var modal = this.modalCtrl.create(ProductPage);
-        modal.present();
-    };
-    BuyProductPage = __decorate([
+    HomePage = __decorate([
         core_1.Component({
-            templateUrl: 'build/pages/buy-product/buy-product.html',
+            templateUrl: 'build/pages/home/home.html'
         }), 
-        __metadata('design:paramtypes', [ionic_angular_1.NavController, ionic_angular_1.NavParams, ionic_angular_1.AlertController, ionic_angular_1.ModalController, ionic_angular_1.ViewController])
-    ], BuyProductPage);
-    return BuyProductPage;
+        __metadata('design:paramtypes', [ionic_angular_1.NavController])
+    ], HomePage);
+    return HomePage;
 }());
-exports.BuyProductPage = BuyProductPage;
-var ProductPage = (function () {
-    function ProductPage(navCtrl, viewCtrl) {
-        this.navCtrl = navCtrl;
-        this.viewCtrl = viewCtrl;
-        this.product = [{ pid: '1', productName: 'chair', price: '1500', desc: 'เก้าอี้', logo: 'images/chair.png' },
-            { pid: '2', productName: 'book', price: '120', desc: 'หนังสือ', logo: 'images/book.png' },
-            { pid: '3', productName: 'note book', price: '50', desc: 'สมุด', logo: 'images/notebook.png' },
-            { pid: '4', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
-            { pid: '5', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
-            { pid: '6', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
-            { pid: '7', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
-            { pid: '8', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
-            { pid: '9', productName: 'pencil', price: '10', desc: 'ดินสอ', logo: 'images/pencil.png' }];
-        this.selectProduct = [];
-    }
-    ProductPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    ProductPage.prototype.itemSelected = function (item) {
-        console.log(item);
-        this.selectProduct.push(item);
-        this.viewCtrl.dismiss();
-        // let bpg = new BuyProductPage(null,null,null,null,null);
-        // bpg.basket = this.selectProduct;
-        // this.navCtrl.push(BuyProductPage,{'selectProduct':this.selectProduct});
-    };
-    ProductPage = __decorate([
-        core_1.Component({
-            templateUrl: 'build/pages/buy-product/product.html',
-        }), 
-        __metadata('design:paramtypes', [ionic_angular_1.NavController, ionic_angular_1.ViewController])
-    ], ProductPage);
-    return ProductPage;
-}());
-exports.ProductPage = ProductPage;
+exports.HomePage = HomePage;
 
 },{"@angular/core":150,"ionic-angular":464}],3:[function(require,module,exports){
 /**
