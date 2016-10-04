@@ -129,7 +129,7 @@ var ProductPage = (function () {
     };
     ProductPage = __decorate([
         core_1.Component({
-            templateUrl: 'build/pages/buy-product/product.html',
+            templateUrl: 'build/pages/buy-product/product-modal.html',
         }), 
         __metadata('design:paramtypes', [ionic_angular_1.NavController, ionic_angular_1.ViewController])
     ], ProductPage);

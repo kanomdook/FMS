@@ -56,7 +56,7 @@ export class BuyProductPage {
 }
 
 @Component({
-  templateUrl: 'build/pages/buy-product/product.html',
+  templateUrl: 'build/pages/buy-product/product-modal.html',
 })
 export class ProductPage {
   product:any = [{ pid: '1', productName: 'chair', price: '1500', desc: 'เก้าอี้', logo: 'images/chair.png' },
