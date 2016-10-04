@@ -16,8 +16,14 @@
 <ion-content padding>
 
   <ion-list inset>
-    <ion-item>สินค้า 1</ion-item>
-    <ion-item>สินค้า 2</ion-item>    
+    <ion-item *ngFor="let item of order">
+      <p>Order Number: {{item.orderNum}}</p>
+      <p>Create Date: {{item.createDate}}</p>
+      <p>Create By: {{item.createBy}}</p>
+      <p>List Item: {{item.listItem}}</p>
+      <p>Seller: {{item.seller}}</p>
+      <p>Payment: {{item.payment}}</p>
+    </ion-item>
     <ion-item></ion-item>
   </ion-list>
 
