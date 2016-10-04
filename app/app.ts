@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { ionicBootstrap, Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
-
-import { TradingPage } from './pages/trading/trading';
-
+import { HomePage } from './pages/home/home';
 
 
 
@@ -11,8 +9,7 @@ import { TradingPage } from './pages/trading/trading';
   template: '<ion-nav [root]="rootPage"></ion-nav>'
 })
 export class MyApp {
-  rootPage: any = TradingPage;
-
+  rootPage: any = HomePage;
 
   constructor(public platform: Platform) {
     platform.ready().then(() => {
