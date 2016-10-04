@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { ionicBootstrap, Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
-import { HomePage } from './pages/home/home';
 import { TradingPage } from './pages/trading/trading';
+
+
 
 
 @Component({
@@ -11,6 +12,7 @@ import { TradingPage } from './pages/trading/trading';
 })
 export class MyApp {
   rootPage: any = TradingPage;
+
 
   constructor(public platform: Platform) {
     platform.ready().then(() => {

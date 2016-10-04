@@ -15,36 +15,19 @@
 
 <ion-content padding>
 
-
-  <!--<ion-card>
-    <ion-card-header>
-      <ion-icon name="add" item-left></ion-icon>
-      <ion-input type="text" [(ngModel)]="addname" placeholder="เพิ่มชื่อผู้ขาย"></ion-input>
-    </ion-card-header>
-
-    <ion-list *ngFor="let Trad of Money">
-      <button ion-item (click)="TradingSelected(Trad)">
-      <ion-icon name="{{Trad.icon}}" item-left></ion-icon>
+   <ion-list>
+    <!--<ion-list-header>
+      <ion-input type="text" [(ngModel)]="Modelname" placeholder="เพิ่มชื่อผู้ขาย"></ion-input>
+      <ion-label>
+        <ion-icon danger name="add" (click)="addname(Modelname)"></ion-icon>
+      </ion-label>
+    </ion-list-header>-->
+    <ion-item *ngFor="let Trad of Trading" (click)="TradingSelected(Trad)">
+      <ion-avatar item-left>
+        <img src="{{Trad.icon}}">
+      </ion-avatar>
       {{Trad.name}}
-    </button>
-    </ion-list>
-    <ion-list *ngFor="let Trad of Trading">
-      <button ion-item (click)="TradingSelected(Trad)">
-      <ion-icon img src="https://cdn2.iconfinder.com/data/icons/aspneticons_v1.0_Nov2006/ok_16x16.gif" item-left></ion-icon>
-      {{Trad.name}}
-    </button>
-    </ion-list>
-  </ion-card>-->
-
-
-
- <ion-list>
-  <ion-item *ngFor="let Trad of Trading">
-    <ion-avatar item-left>
-      <img src="{{Trad.icon}}">
-    </ion-avatar>
-    {{Trad.name}}
-  </ion-item>
-</ion-list>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
