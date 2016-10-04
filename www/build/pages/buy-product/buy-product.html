@@ -27,7 +27,9 @@
     </ion-thumbnail>
     <h2>{{item.productName}}</h2>
     <p>{{item.desc}}</p>
-    <p>ราคา: <b>{{item.price}}</b> บาท</p>
+    <p>ราคาต่อชิ้น: <b>{{item.price}}</b> บาท</p>
+    <p>จำนวน: <b>{{item.qty}}</b></p>
+    <p>ราคารวม: <b>{{item.totalPrice}}</b> บาท</p>    
     <button clear item-right color="danger" (click)="deleteItem(item)">
       <ion-icon name="trash"></ion-icon>
     </button>

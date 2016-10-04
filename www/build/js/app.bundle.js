@@ -47,12 +47,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var ionic_angular_1 = require('ionic-angular');
-/*
-  Generated class for the BuyProductPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 var BuyProductPage = (function () {
     function BuyProductPage(navCtrl, navParams, alertCtrl, modalCtrl, viewCtrl) {
         this.navCtrl = navCtrl;
@@ -60,8 +54,7 @@ var BuyProductPage = (function () {
         this.alertCtrl = alertCtrl;
         this.modalCtrl = modalCtrl;
         this.viewCtrl = viewCtrl;
-        this.basket = [{ pid: '2', productName: 'book', price: '120', desc: 'หนังสือ', logo: 'images/book.png' },
-            { pid: '3', productName: 'note book', price: '50', desc: 'สมุด', logo: 'images/notebook.png' }];
+        this.basket = [];
     }
     BuyProductPage.prototype.deleteItem = function (item) {
         var _this = this;
@@ -78,7 +71,7 @@ var BuyProductPage = (function () {
                     text: 'ตกลง',
                     handler: function () {
                         for (var i = 0; i < _this.basket.length; i++) {
-                            if (_this.basket[i].pid == item.pid) {
+                            if (_this.basket[i].id == item.id) {
                                 _this.basket.splice(i, 1);
                                 break;
                             }
@@ -89,8 +82,31 @@ var BuyProductPage = (function () {
         });
         confirm.present();
     };
+    BuyProductPage.prototype.arrayIndexOf = function (myArr, key) {
+        var result = -1;
+        myArr.forEach(function (idx) {
+            if (idx.id == key.id)
+                result++;
+        });
+        return result;
+    };
     BuyProductPage.prototype.presentModal = function () {
+        var _this = this;
         var modal = this.modalCtrl.create(ProductPage);
+        modal.onDidDismiss(function (data) {
+            if (_this.arrayIndexOf(_this.basket, data) != -1) {
+                var selected = _this.basket.filter(function (itm) {
+                    return itm.id == data.id;
+                })[0];
+                selected.qty++;
+                selected.totalPrice = selected.price * selected.qty;
+            }
+            else {
+                data.qty = 1;
+                data.totalPrice = data.price * data.qty;
+                _this.basket.push(data);
+            }
+        });
         modal.present();
     };
     BuyProductPage = __decorate([
@@ -106,27 +122,21 @@ var ProductPage = (function () {
     function ProductPage(navCtrl, viewCtrl) {
         this.navCtrl = navCtrl;
         this.viewCtrl = viewCtrl;
-        this.product = [{ pid: '1', productName: 'chair', price: '1500', desc: 'เก้าอี้', logo: 'images/chair.png' },
-            { pid: '2', productName: 'book', price: '120', desc: 'หนังสือ', logo: 'images/book.png' },
-            { pid: '3', productName: 'note book', price: '50', desc: 'สมุด', logo: 'images/notebook.png' },
-            { pid: '4', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
-            { pid: '5', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
-            { pid: '6', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
-            { pid: '7', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
-            { pid: '8', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
-            { pid: '9', productName: 'pencil', price: '10', desc: 'ดินสอ', logo: 'images/pencil.png' }];
-        this.selectProduct = [];
+        this.product = [{ id: '1', productName: 'chair', price: '1500', desc: 'เก้าอี้', logo: 'images/chair.png' },
+            { id: '2', productName: 'book', price: '120', desc: 'หนังสือ', logo: 'images/book.png' },
+            { id: '3', productName: 'note book', price: '50', desc: 'สมุด', logo: 'images/notebook.png' },
+            { id: '4', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
+            { id: '5', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
+            { id: '6', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
+            { id: '7', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
+            { id: '8', productName: 'pen', price: '15', desc: 'ปากกา', logo: 'images/pen.png' },
+            { id: '9', productName: 'pencil', price: '10', desc: 'ดินสอ', logo: 'images/pencil.png' }];
     }
     ProductPage.prototype.dismiss = function () {
         this.viewCtrl.dismiss();
     };
     ProductPage.prototype.itemSelected = function (item) {
-        console.log(item);
-        this.selectProduct.push(item);
-        this.viewCtrl.dismiss();
-        // let bpg = new BuyProductPage(null,null,null,null,null);
-        // bpg.basket = this.selectProduct;
-        // this.navCtrl.push(BuyProductPage,{'selectProduct':this.selectProduct});
+        this.viewCtrl.dismiss(item);
     };
     ProductPage = __decorate([
         core_1.Component({
